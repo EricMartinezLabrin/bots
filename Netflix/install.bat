@@ -1,0 +1,1 @@
+@echo Comenzamos Instalacion&&npm init -y&&npm i puppeteer&&npm i csv-parse&&@echo Instalacion Terminada&&@echo Ya puede cerrar esta ventana&&PAUSE
