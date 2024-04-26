@@ -103,11 +103,11 @@ function addCsv(email, comments) {
         //Check Deleted Account
         try {
           await page.waitForSelector(
-            "#appMountPoint > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
+            "#appMountPoint > div > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
             { timeout: 2000 }
           );
           var resuscribe = await page.$eval(
-            "#appMountPoint > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
+            "#appMountPoint > div > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
             (el) => el.textContent
           );
           console.log(`${email}: Suscripción cancelada totalmente`);
