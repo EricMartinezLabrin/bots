@@ -1,0 +1,1 @@
+@echo Comenzamos Instalacion&&node index.js&&@echo Proceso terminado&&@echo Ya puede cerrar esta ventana&&PAUSE
