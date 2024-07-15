@@ -51,14 +51,15 @@ function addCsv(email, comments) {
       });
 
       //Login Email
+      console.log("puto el gonzalo si no funciona");
 
       await page.click("#onetrust-close-btn-container > button");
-      await page.waitForSelector("#\\:r0\\:");
-      await page.click("#\\:r0\\:");
-      await page.type("#\\:r0\\:", email);
+      await page.waitForSelector("#:r0:");
+      await page.click("#:r0:");
+      await page.type("#:r0:", email);
 
       // Login Password
-      await page.type("#\\:r3\\:", password);
+      await page.type("#:r3:", password);
       await page.click(
         "#appMountPoint > div > div > div.default-ltr-cache-8hdzfz.eyojgsc0 > div > form > button"
       );
@@ -103,11 +104,12 @@ function addCsv(email, comments) {
         //Check Deleted Account
         try {
           await page.waitForSelector(
-            "#appMountPoint > div > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
+            "#appMountPoint > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
             { timeout: 2000 }
           );
+          // await page.waitForSelector("#appMountPoint > div > div > div.simpleContainer > div > form > div > div.stepHeader-container > div > h1 > span",{timeout:3000})
           var resuscribe = await page.$eval(
-            "#appMountPoint > div > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
+            "#appMountPoint > div > div > div.simpleContainer > div > div.planContainer > div.stepHeader-container > div > h1",
             (el) => el.textContent
           );
           console.log(`${email}: Suscripción cancelada totalmente`);
@@ -153,7 +155,7 @@ function addCsv(email, comments) {
         }
       }
       //Check Facturation Date
-      await page.goto("https://www.netflix.com/account");
+      await page.goto("https://www.netflix.com/BillingActivity");
       // await page.waitForNetworkIdle()
       try {
         await page.waitForSelector(
@@ -188,13 +190,8 @@ function addCsv(email, comments) {
         }
       }
       try {
-        /**
-         * The expiration message obtained from the Netflix page.
-         * @type {string}
-         */
-
         var expirationMessage = await page.$eval(
-          "#appMountPoint > div > div > div > section > div.default-ltr-cache-1fhvoso.eslj5pt1 > div > div > div > div > div > div.default-ltr-cache-16dvsg3.el0v7280 > section > div:nth-child(2) > div > div.default-ltr-cache-1cr1i8r.e19xx6v33 > p",
+          "#appMountPoint > div > div > div > div.bd > div > div > div > table > tbody > tr:nth-child(2) > td",
           (el) => el.textContent
         );
         console.log(`${email}: ${expirationMessage}`);

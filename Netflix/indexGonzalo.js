@@ -38,7 +38,7 @@ function addCsv(email, comments) {
   console.log("");
 
   // Iniciar el navegador Puppeteer
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   // Recorrer el array acc
@@ -112,7 +112,7 @@ function addCsv(email, comments) {
             (el) => el.textContent
           );
           console.log(`${email}: ${status} - ${plan}`);
-          addCsv(email, element);
+          addCsv(email, status + " - " + plan);
           continue;
         }
         await page.waitForSelector(
@@ -128,7 +128,7 @@ function addCsv(email, comments) {
           (el) => el.textContent
         );
         console.log(`${email}: ${suspended} - ${plan}`);
-        addCsv(email, suspended);
+        addCsv(email, suspended + " - " + plan);
         continue;
       } catch (error) {}
 
